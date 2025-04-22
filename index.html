@@ -1,236 +1,50 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>alice .n — Galerie</title>
+  <meta charset="UTF-8">
+  <title>Carrousel Alice .n</title>
   <style>
     body {
-      font-family: sans-serif;
-      background: #fdfdfd;
-      color: #222;
-      text-align: center;
-      padding: 2rem;
-    }
-    h1 {
-      color: #550033;
-    }
-    .carousel {
-      display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      gap: 1rem;
-      padding: 1rem 0;
-    }
-    .carousel img {
-      height: 300px;
-      scroll-snap-align: center;
-      border-radius: 10px;
-      object-fit: cover;
-    }
-  </style>
-</head>
-<body>
-  <h1>alice <span style="color:#b30059;">.n</span></h1>
-  <p>Galerie d’images</p>
-
-  <div class="carousel">
-    <img src="https://source.unsplash.com/800x600/?art" alt="Image 1">
-    <img src="https://source.unsplash.com/800x600/?flowers" alt="Image 2">
-    <img src="https://source.unsplash.com/800x600/?abstract" alt="Image 3">
-    <img src="https://source.unsplash.com/800x600/?body" alt="Image 4">
-  </div>
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>alice .n – Galerie privée</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      background: #fefefe;
       margin: 0;
-      padding: 2rem;
-      text-align: center;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-    }
-
-    h1 span {
-      color: #a0004d; /* pourpre */
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    #passwordPrompt {
-      margin-top: 2rem;
-    }
-
-    input[type="password"] {
-      padding: 0.5rem;
-      font-size: 1rem;
-    }
-
-    button {
-      padding: 0.5rem 1rem;
-      font-size: 1rem;
-      margin-top: 1rem;
-      cursor: pointer;
-    }
-
-    .carousel-container {
-      position: relative;
-      max-width: 800px;
-      margin: 2rem auto;
-      overflow: hidden;
-    }
-
-    .carousel {
-      display: flex;
-      transition: transform 0.4s ease;
-    }
-
-    .carousel img {
-      width: 100%;
-      flex-shrink: 0;
-      border-radius: 10px;
-    }
-
-    .btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: rgba(0, 0, 0, 0.4);
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      font-size: 1.5rem;
-      border-radius: 5px;
-    }
-
-    .btn.left {
-      left: 10px;
-    }
-
-    .btn.right {
-      right: 10px;
-    }
-
-    .btn:hover {
-      background-color: rgba(0, 0, 0, 0.7);
-    }
-
-  </style>
-</head>
-<body>
-
-  <h1>alice <span>.n</span></h1>
-
-  <div id="passwordPrompt">
-    <p>Cette galerie est privée.</p>
-    <input type="password" id="passwordInput" placeholder="Mot de passe" />
-    <br>
-    <button onclick="checkPassword()">Accéder</button>
-    <p id="error" style="color: red;"></p>
-  </div>
-
-  <div id="carouselSection" class="hidden">
-    <div class="carousel-container">
-      <button class="btn left" onclick="moveSlide(-1)">‹</button>
-      <div class="carousel" id="carousel">
-        <img https://github.com/opaquenoir/.numero1/blob/main/IMG_8483.JPG?raw=true
-        <img src="https://source.unsplash.com/800x600/?abstract" alt="Image 2" />
-        <img src="https://source.unsplash.com/800x600/?body" alt="Image 3" />
-      </div>
-      <button class="btn right" onclick="moveSlide(1)">›</button>
-    </div>
-  </div>
-
-  <script>
-    const PASSWORD = "secret123"; // <-- remplace par ton mot de passe perso
-    const input = document.getElementById("passwordInput");
-    const error = document.getElementById("error");
-    const section = document.getElementById("carouselSection");
-
-    function checkPassword() {
-      if (input.value === PASSWORD) {
-        document.getElementById("passwordPrompt").style.display = "none";
-        section.classList.remove("hidden");
-      } else {
-        error.textContent = "Mot de passe incorrect.";
-      }
-    }
-
-    // Carrousel JS
-    const carousel = document.getElementById("carousel");
-    let currentIndex = 0;
-
-    function moveSlide(direction) {
-      const slides = carousel.children;
-      const total = slides.length;
-      currentIndex += direction;
-
-      if (currentIndex < 0) currentIndex = total - 1;
-      if (currentIndex >= total) currentIndex = 0;
-
-      const offset = -currentIndex * 100;
-      carousel.style.transform = `translateX(${offset}%)`;
-    }
-  </script>
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <title>alice .n — carrousels</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
+      font-family: sans-serif;
       background-color: #111;
-      color: white;
-      margin: 0;
-      padding: 20px;
-    }
-    h1 {
+      color: #fff;
       text-align: center;
-      margin-bottom: 40px;
     }
+
+    h1 {
+      margin-top: 2rem;
+      color: #b30059;
+    }
+
     .carousel {
       display: flex;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
       gap: 10px;
-      margin-bottom: 60px;
+      padding: 20px;
     }
+
     .carousel img {
       height: 300px;
+      border-radius: 8px;
       scroll-snap-align: center;
-      border-radius: 10px;
       cursor: pointer;
       transition: transform 0.3s ease;
     }
+
     .carousel img:hover {
       transform: scale(1.05);
     }
 
-    /* Lightbox fullscreen */
-    .lightbox {
+    /* Plein écran */
+    .fullscreen {
       position: fixed;
       top: 0;
       left: 0;
+      background: rgba(0, 0, 0, 0.95);
       width: 100vw;
       height: 100vh;
-      background: rgba(0,0,0,0.9);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -238,53 +52,101 @@
       opacity: 0;
       transition: opacity 0.3s ease;
     }
-    .lightbox img {
+
+    .fullscreen img {
       max-width: 90vw;
       max-height: 90vh;
-      border-radius: 10px;
     }
-    .lightbox.active {
+
+    .fullscreen.active {
       visibility: visible;
       opacity: 1;
+    }
+
+    .nav {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+    }
+
+    .nav button {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: none;
+      font-size: 2rem;
+      padding: 1rem;
+      cursor: pointer;
+    }
+
+    .nav button:hover {
+      background: rgba(255, 255, 255, 0.4);
     }
   </style>
 </head>
 <body>
-  <h1>alice .n — Galeries</h1>
 
-  <div class="carousel">
-    <img src="https://picsum.photos/id/1011/600/400" alt="1">
-    <img src="https://picsum.photos/id/1015/600/400" alt="2">
-    <img src="https://picsum.photos/id/1020/600/400" alt="3">
+<h1>alice .n — Carrousel</h1>
+
+<div class="carousel" id="carousel">
+  <img src="https://source.unsplash.com/800x600/?art,1" alt="1">
+  <img src="https://source.unsplash.com/800x600/?art,2" alt="2">
+  <img src="https://source.unsplash.com/800x600/?art,3" alt="3">
+  <img src="https://source.unsplash.com/800x600/?art,4" alt="4">
+  <img src="https://source.unsplash.com/800x600/?art,5" alt="5">
+  <img src="https://source.unsplash.com/800x600/?art,6" alt="6">
+  <img src="https://source.unsplash.com/800x600/?art,7" alt="7">
+  <img src="https://source.unsplash.com/800x600/?art,8" alt="8">
+  <img src="https://source.unsplash.com/800x600/?art,9" alt="9">
+  <img src="https://source.unsplash.com/800x600/?art,10" alt="10">
+</div>
+
+<div class="fullscreen" id="fullscreen">
+  <div class="nav">
+    <button onclick="prev()">‹</button>
+    <button onclick="next()">›</button>
   </div>
+  <img id="fullscreenImg" src="" alt="">
+</div>
 
-  <div class="carousel">
-    <img src="https://picsum.photos/id/1035/600/400" alt="4">
-    <img src="https://picsum.photos/id/1038/600/400" alt="5">
-    <img src="https://picsum.photos/id/1041/600/400" alt="6">
-  </div>
+<script>
+  const images = document.querySelectorAll('.carousel img');
+  const fullscreen = document.getElementById('fullscreen');
+  const fullscreenImg = document.getElementById('fullscreenImg');
+  let currentIndex = 0;
 
-  <!-- Lightbox fullscreen -->
-  <div class="lightbox" id="lightbox">
-    <img src="" alt="">
-  </div>
-
-  <script>
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = lightbox.querySelector('img');
-
-    document.querySelectorAll('.carousel img').forEach(img => {
-      img.addEventListener('click', () => {
-        lightbox.classList.add('active');
-        lightboxImg.src = img.src;
-      });
+  images.forEach((img, i) => {
+    img.addEventListener('click', () => {
+      currentIndex = i;
+      fullscreenImg.src = img.src;
+      fullscreen.classList.add('active');
     });
+  });
 
-    lightbox.addEventListener('click', () => {
-      lightbox.classList.remove('active');
-    });
-  </script>
+  fullscreen.addEventListener('click', (e) => {
+    if (e.target === fullscreen || e.target === fullscreenImg) {
+      fullscreen.classList.remove('active');
+    }
+  });
+
+  function showImage(index) {
+    currentIndex = (index + images.length) % images.length;
+    fullscreenImg.src = images[currentIndex].src;
+  }
+
+  function prev() {
+    showImage(currentIndex - 1);
+  }
+
+  function next() {
+    showImage(currentIndex + 1);
+  }
+</script>
+
 </body>
 </html>
+
 
 
