@@ -187,3 +187,103 @@
   </script>
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>alice .n — carrousels</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: white;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .carousel {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 10px;
+      margin-bottom: 60px;
+    }
+    .carousel img {
+      height: 300px;
+      scroll-snap-align: center;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .carousel img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Lightbox fullscreen */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 10px;
+    }
+    .lightbox.active {
+      visibility: visible;
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <h1>alice .n — Galeries</h1>
+
+  <div class="carousel">
+    <img src="https://picsum.photos/id/1011/600/400" alt="1">
+    <img src="https://picsum.photos/id/1015/600/400" alt="2">
+    <img src="https://picsum.photos/id/1020/600/400" alt="3">
+  </div>
+
+  <div class="carousel">
+    <img src="https://picsum.photos/id/1035/600/400" alt="4">
+    <img src="https://picsum.photos/id/1038/600/400" alt="5">
+    <img src="https://picsum.photos/id/1041/600/400" alt="6">
+  </div>
+
+  <!-- Lightbox fullscreen -->
+  <div class="lightbox" id="lightbox">
+    <img src="" alt="">
+  </div>
+
+  <script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = lightbox.querySelector('img');
+
+    document.querySelectorAll('.carousel img').forEach(img => {
+      img.addEventListener('click', () => {
+        lightbox.classList.add('active');
+        lightboxImg.src = img.src;
+      });
+    });
+
+    lightbox.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+    });
+  </script>
+</body>
+</html>3
+
