@@ -1,10 +1,189 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Init</title>
-  </head>
-  <body>
-    Init
-  </body>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>alice .n — Galerie</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #fdfdfd;
+      color: #222;
+      text-align: center;
+      padding: 2rem;
+    }
+    h1 {
+      color: #550033;
+    }
+    .carousel {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+    .carousel img {
+      height: 300px;
+      scroll-snap-align: center;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <h1>alice <span style="color:#b30059;">.n</span></h1>
+  <p>Galerie d’images</p>
+
+  <div class="carousel">
+    <img src="https://source.unsplash.com/800x600/?art" alt="Image 1">
+    <img src="https://source.unsplash.com/800x600/?flowers" alt="Image 2">
+    <img src="https://source.unsplash.com/800x600/?abstract" alt="Image 3">
+    <img src="https://source.unsplash.com/800x600/?body" alt="Image 4">
+  </div>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>alice .n – Galerie privée</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #fefefe;
+      margin: 0;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    h1 span {
+      color: #a0004d; /* pourpre */
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    #passwordPrompt {
+      margin-top: 2rem;
+    }
+
+    input[type="password"] {
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      margin-top: 1rem;
+      cursor: pointer;
+    }
+
+    .carousel-container {
+      position: relative;
+      max-width: 800px;
+      margin: 2rem auto;
+      overflow: hidden;
+    }
+
+    .carousel {
+      display: flex;
+      transition: transform 0.4s ease;
+    }
+
+    .carousel img {
+      width: 100%;
+      flex-shrink: 0;
+      border-radius: 10px;
+    }
+
+    .btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.4);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      font-size: 1.5rem;
+      border-radius: 5px;
+    }
+
+    .btn.left {
+      left: 10px;
+    }
+
+    .btn.right {
+      right: 10px;
+    }
+
+    .btn:hover {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>alice <span>.n</span></h1>
+
+  <div id="passwordPrompt">
+    <p>Cette galerie est privée.</p>
+    <input type="password" id="passwordInput" placeholder="Mot de passe" />
+    <br>
+    <button onclick="checkPassword()">Accéder</button>
+    <p id="error" style="color: red;"></p>
+  </div>
+
+  <div id="carouselSection" class="hidden">
+    <div class="carousel-container">
+      <button class="btn left" onclick="moveSlide(-1)">‹</button>
+      <div class="carousel" id="carousel">
+        <img src="https://source.unsplash.com/800x600/?art" alt="Image 1" />
+        <img src="https://source.unsplash.com/800x600/?abstract" alt="Image 2" />
+        <img src="https://source.unsplash.com/800x600/?body" alt="Image 3" />
+      </div>
+      <button class="btn right" onclick="moveSlide(1)">›</button>
+    </div>
+  </div>
+
+  <script>
+    const PASSWORD = "secret123"; // <-- remplace par ton mot de passe perso
+    const input = document.getElementById("passwordInput");
+    const error = document.getElementById("error");
+    const section = document.getElementById("carouselSection");
+
+    function checkPassword() {
+      if (input.value === PASSWORD) {
+        document.getElementById("passwordPrompt").style.display = "none";
+        section.classList.remove("hidden");
+      } else {
+        error.textContent = "Mot de passe incorrect.";
+      }
+    }
+
+    // Carrousel JS
+    const carousel = document.getElementById("carousel");
+    let currentIndex = 0;
+
+    function moveSlide(direction) {
+      const slides = carousel.children;
+      const total = slides.length;
+      currentIndex += direction;
+
+      if (currentIndex < 0) currentIndex = total - 1;
+      if (currentIndex >= total) currentIndex = 0;
+
+      const offset = -currentIndex * 100;
+      carousel.style.transform = `translateX(${offset}%)`;
+    }
+  </script>
+</body>
 </html>
